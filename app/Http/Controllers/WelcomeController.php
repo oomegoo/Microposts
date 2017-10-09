@@ -26,7 +26,7 @@ class WelcomeController extends Controller
                 'microposts' => $microposts,
                 ];
         }
-        return view('welcom',$data);
+        return view('welcome',$data);
     }
 
     /**
