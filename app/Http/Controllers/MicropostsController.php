@@ -37,17 +37,6 @@ class MicropostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
         $this->validate($request,[
             'content' => 'required|max:255',
         ]);
@@ -56,6 +45,17 @@ class MicropostsController extends Controller
         ]);
             
         return redirect('/');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+     //
     }
 
     /**
@@ -94,6 +94,6 @@ class MicropostsController extends Controller
         if (\Auth::user()->id === $micropost->user_id) {
             $micropost->delete();
         }
-        return redirect()->back()
+        return redirect()->back();
     }
 }
