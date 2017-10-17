@@ -46,7 +46,7 @@ class UsersController extends Controller
             
         $data += $this->counts($user);
         
-        return view('users.followings' $data);
+        return view('users.followings', $data);
     }
     
     public function followers($id)
@@ -55,9 +55,9 @@ class UsersController extends Controller
         $followers = $user->followers()->paginate(10);
         
         $data = [
-            'users' => $user,
-            'user' => $follower,
-            ];
+            'user' => $user,
+            'users' => $followers,
+        ];
             
         $data += $this->counts($user);
         
