@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UserFollowController extends Controller
+use App\Micropost;
+
+class UserFavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,9 +37,9 @@ class UserFollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request,$id)
     {
-        \Auth::user()->follow($id);
+        \Auth::user()->favoritePost($id);
         return redirect()->back();
     }
 
@@ -83,7 +85,7 @@ class UserFollowController extends Controller
      */
     public function destroy($id)
     {
-        \Auth::user()->unfollow($id);
+        \Auth::user()->undofavorite($id);
         return redirect()->back();
     }
 }
