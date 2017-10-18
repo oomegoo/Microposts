@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 
+
 class UsersController extends Controller
 {
     public function index()
@@ -66,10 +67,15 @@ class UsersController extends Controller
     
     public function favorites($id)
     {
-        $micropost = Micropost::find($id);
-        $favorites = $micropost->favorites()->paginate(10);
+        $user = User::find($id);
+        $favorites = $user->favorites()->paginate(10);
         
-        return view('users.favorites',$favorites);
+        $data =[
+                'user' => $user,
+                'favorites' => $favorites,
+                ];
+        
+        return view('users.favorites', $data);
     }
 }
 

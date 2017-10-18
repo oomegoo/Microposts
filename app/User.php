@@ -109,9 +109,8 @@ class User extends Model implements AuthenticatableContract,
     public function favoritePost($micropostId)
     {
         $exist = $this->is_favorite($micropostId);
-        $its_me = $this->id == $micropostId;
         
-        if ($exist ||$its_me) {
+        if ($exist) {
             return false;
         } else {
             $this->favorites()->attach($micropostId);
@@ -123,9 +122,8 @@ class User extends Model implements AuthenticatableContract,
     public function undofavorite($micropostId)
     {
         $exist = $this->is_favorite($micropostId);
-        $its_me = $this->id == $micropostId;
         
-        if ($exist && !$its_me) {
+        if ($exist) {
             $this->favorites()->detach($micropostId);
             return true;
         } else {
@@ -136,12 +134,5 @@ class User extends Model implements AuthenticatableContract,
     public function is_favorite($micropostId)
     {
         return $this->favorites()->where('micropost_id',$micropostId)->exists();
-    }
-    
-    public function favorite_lists()
-    {
-        $favorite_micropost_ids = $this->favorites()->lists('microposts.id')->toArray();
-        
-        return Micropost::whereIn('micropost_id',$favorite_micropost_ids);
     }
 }

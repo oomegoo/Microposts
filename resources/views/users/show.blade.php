@@ -12,6 +12,11 @@
                 </div>
             </div>
             @include('user_follow.follow_button',['user' => $user])
+            <div class="col-xs-8">
+                @if (Auth::user()->id == $user->id)
+                <p>{!! link_to_route('users.favorites','お気に入り一覧',['id' => Auth::user()->id],['class' => 'btn btn-info']) !!}</p>
+            @endif
+            </div>
         </aside>
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">

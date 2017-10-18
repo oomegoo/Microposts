@@ -16,7 +16,9 @@
                     @include('microposts.microposts',['microposts' => $microposts])
                 @endif
             </div>
-        </div>
+            <div class="col-xs-2 col-xs-offset-10">
+                {!! link_to_route('users.favorites','お気に入り一覧',['id' => $user->id],['class' => 'btn btn-info']) !!}
+            </div>
     @else
         <div class="center jumbotron">
             <div class="text-center">
