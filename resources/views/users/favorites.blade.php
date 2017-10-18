@@ -17,5 +17,7 @@
         @endforeach
     </ul>
     {!! $favorites->render() !!}
+    @else
+    <p>お気に入りに登録されているものはありません</p>
     @endif
 @endsection
