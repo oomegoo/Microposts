@@ -102,7 +102,7 @@ class User extends Model implements AuthenticatableContract,
     //多対多の紐付け
     public function favorites()
     {
-        return $this->belongsToMany(User::class,'user_fav','user_id','micropost_id')->withTimestamps();
+        return $this->belongsToMany(Micropost::class,'user_fav','user_id','micropost_id')->withTimestamps();
     }
     
     //お気に入りに登録

@@ -16,6 +16,7 @@ class Micropost extends Model
     //多対多の紐付け
     public function favoritesBy()
     {
-        return $this->belongsToMany(Micropost::class,'user_fav','micropost_id','user_id')->withTimestamps();
+        return $this->belongsToMany(User::class,'user_fav','micropost_id','user_id')->withTimestamps();
     }
+    
 }
